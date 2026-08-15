@@ -21,6 +21,7 @@ dependencies:
   image_picker: ^1.1.2
   google_mlkit_text_recognition: ^0.13.0
   file_picker: ^8.0.1
+  flutter_chess_board: ^2.0.0
 
 dev_dependencies:
   flutter_test:

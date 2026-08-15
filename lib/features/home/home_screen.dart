@@ -6,6 +6,7 @@ import '../translation/translation_screen.dart';
 import '../dialogue/dialogue_screen.dart';
 import '../documents/document_screen.dart';
 import '../stories/stories_screen.dart';
+import '../games/games_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -108,7 +109,13 @@ class HomeScreen extends StatelessWidget {
                       Colors.orangeAccent, 
                       () => Navigator.push(context, MaterialPageRoute(builder: (_) => const StoriesScreen()))
                     ),
-                    _buildFeatureCard(Icons.sports_esports, 'ألعاب 3D', 'شطرنج + روبيك', Colors.purpleAccent, () {}),
+                    _buildFeatureCard(
+                      Icons.sports_esports, 
+                      'ألعاب 3D', 
+                      'شطرنج + روبيك', 
+                      Colors.purpleAccent, 
+                      () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GamesScreen()))
+                    ),
                     _buildFeatureCard(Icons.settings, 'الإعدادات', 'تخصيص وترقية برو', Colors.blueGrey, () {}),
                   ]),
                 ),
