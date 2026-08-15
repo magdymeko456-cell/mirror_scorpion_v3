@@ -10,11 +10,7 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 
-subprojects {
-    project.evaluationDependsOn(':app')
-}
-
-// حقن إعدادات SDK في جميع المكتبات الفرعية لتجنب تعارضات البناء
+// حقن إعدادات SDK في جميع المكتبات الفرعية قبل التقييم النهائي
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
@@ -28,6 +24,10 @@ subprojects {
             }
         }
     }
+}
+
+subprojects {
+    project.evaluationDependsOn(':app')
 }
 
 tasks.register("clean", Delete) {
