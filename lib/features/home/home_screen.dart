@@ -5,6 +5,7 @@ import '../../core/services/floating_bubble_service.dart';
 import '../translation/translation_screen.dart';
 import '../dialogue/dialogue_screen.dart';
 import '../documents/document_screen.dart';
+import '../stories/stories_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -100,7 +101,13 @@ class HomeScreen extends StatelessWidget {
                       Colors.tealAccent, 
                       () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DocumentScreen()))
                     ),
-                    _buildFeatureCard(Icons.auto_stories, 'قصص وإلهام', 'مكتبة ذكية متكاملة', Colors.orangeAccent, () {}),
+                    _buildFeatureCard(
+                      Icons.auto_stories, 
+                      'قصص وإلهام', 
+                      'مكتبة ذكية متكاملة', 
+                      Colors.orangeAccent, 
+                      () => Navigator.push(context, MaterialPageRoute(builder: (_) => const StoriesScreen()))
+                    ),
                     _buildFeatureCard(Icons.sports_esports, 'ألعاب 3D', 'شطرنج + روبيك', Colors.purpleAccent, () {}),
                     _buildFeatureCard(Icons.settings, 'الإعدادات', 'تخصيص وترقية برو', Colors.blueGrey, () {}),
                   ]),

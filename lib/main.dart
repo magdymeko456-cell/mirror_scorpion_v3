@@ -6,6 +6,7 @@ import 'core/services/language_service.dart';
 import 'core/services/floating_bubble_service.dart';
 import 'core/services/translation_service.dart';
 import 'core/services/tts_service.dart';
+import 'core/services/stories_service.dart';
 import 'features/home/home_screen.dart';
 
 void main() {
@@ -18,6 +19,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => FloatingBubbleService()),
         ChangeNotifierProvider(create: (_) => TranslationService()),
         ChangeNotifierProvider(create: (_) => TTSService()),
+        ChangeNotifierProvider(create: (_) => StoriesService()),
       ],
       child: const MirrorScorpionApp(),
     ),
