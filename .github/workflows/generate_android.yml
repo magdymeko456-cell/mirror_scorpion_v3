@@ -1,0 +1,27 @@
+name: Generate Android Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+
+      - name: Generate Android Platform
+        run: flutter create --platforms android .
+
+      - name: Commit and Push Android Files
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add android/
+          git commit -m "chore: auto-generate android platform files"
+          git push
