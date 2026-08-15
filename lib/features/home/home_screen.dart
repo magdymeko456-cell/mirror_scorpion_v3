@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/theme/theme_provider.dart';
 import '../../core/services/floating_bubble_service.dart';
+import '../translation/translation_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,7 +26,6 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           child: CustomScrollView(
             slivers: [
-              // --- Header Section ---
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -67,8 +67,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // --- Grid Section (6 Cards) ---
               SliverPadding(
                 padding: const EdgeInsets.all(16),
                 sliver: SliverGrid(
@@ -79,7 +77,13 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 0.9,
                   ),
                   delegate: SliverChildListDelegate([
-                    _buildFeatureCard(Icons.translate, 'ترجمة نصية', 'لغة + مايك 100', Colors.blueAccent, () {}),
+                    _buildFeatureCard(
+                      Icons.translate, 
+                      'ترجمة نصية', 
+                      'لغة + مايك 100', 
+                      Colors.blueAccent, 
+                      () => Navigator.push(context, MaterialPageRoute(builder: (_) => const TranslationScreen()))
+                    ),
                     _buildFeatureCard(Icons.forum, 'حوار مترجم', 'محادثة ثنائية فورية', Colors.cyanAccent, () {}),
                     _buildFeatureCard(Icons.document_scanner, 'مستندات وعدسة', 'ترجمة صور وملفات', Colors.tealAccent, () {}),
                     _buildFeatureCard(Icons.auto_stories, 'قصص وإلهام', 'مكتبة ذكية متكاملة', Colors.orangeAccent, () {}),
