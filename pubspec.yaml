@@ -1,0 +1,37 @@
+name: mirror_scorpion_v3
+description: "Mirror Scorpion v3 - حيث تُصنع البدايات بنقاء واستقرار"
+publish_to: 'none'
+version: 1.3.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.5+1
+  http: ^1.6.0
+  shared_preferences: ^2.5.5
+  path_provider: ^2.1.6
+  flutter_tts: ^4.2.5
+  sqflite: ^2.4.3
+  intl: ^0.20.2
+  permission_handler: ^13.0.0
+  speech_to_text: ^7.0.0
+  image_picker: ^1.2.3
+  webview_flutter: ^4.10.0
+  file_picker: ^8.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/
+    - assets/images/
