@@ -14,7 +14,7 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-# حقن إعدادات SDK في جميع المكتبات الفرعية لتجنب تعارضات البناء
+// حقن إعدادات SDK في جميع المكتبات الفرعية لتجنب تعارضات البناء
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
