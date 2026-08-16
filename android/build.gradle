@@ -10,7 +10,6 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 
-// حقن عالمي وآمن لكائن flutter والإعدادات في كل المكتبات الفرعية
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
