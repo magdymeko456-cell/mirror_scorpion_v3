@@ -18,34 +18,9 @@ allprojects {
 }
 
 rootProject.buildDir = '../build'
-
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-
-    // الحقن النووي لكائن flutter لحل أخطاء الخصائص المفقودة
-    project.ext.flutter = [
-        compileSdkVersion: 34,
-        minSdkVersion: 21,
-        targetSdkVersion: 34
-    ]
 }
-
-// إجبار كافة المكتبات الفرعية على استخدام SDK 34 و minSdk 21
-subprojects {
-    afterEvaluate { project ->
-        if (project.hasProperty('android')) {
-            project.android {
-                compileSdkVersion 34
-                buildToolsVersion "34.0.0"
-                defaultConfig {
-                    minSdkVersion 21
-                    targetSdkVersion 34
-                }
-            }
-        }
-    }
-}
-
 subprojects {
     project.evaluationDependsOn(':app')
 }
