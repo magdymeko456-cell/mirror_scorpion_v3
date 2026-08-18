@@ -25,12 +25,13 @@ subprojects {
 subprojects {
     project.evaluationDependsOn(':app')
 
-    afterEvaluate { subproject ->
-        if (subproject.hasProperty('android')) {
-            subproject.android {
-                if (compileSdkVersion == null) {
-                    compileSdkVersion 34
-                }
+    // حقن فوري لإعدادات الـ SDK لأي مكتبة تستخدم خيار Library/App Plugin
+    project.plugins.withType(com.android.build.gradle.BasePlugin) {
+        project.android {
+            compileSdkVersion 34
+            defaultConfig {
+                minSdkVersion 21
+                targetSdkVersion 34
             }
         }
     }
