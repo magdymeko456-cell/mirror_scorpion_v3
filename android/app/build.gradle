@@ -3,15 +3,17 @@ def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader) }
 }
+
 def flutterRoot = localProperties.getProperty('flutter.sdk') ?: System.getenv("FLUTTER_ROOT")
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-if (flutterRoot != null) { apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle" }
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.mirror.scorpion.v3"
     compileSdk 34
+
     defaultConfig {
         applicationId "com.mirror.scorpion.v3"
         minSdk 21
@@ -20,4 +22,7 @@ android {
         versionName "1.3.0"
     }
 }
-flutter { source '../..' }
+
+flutter {
+    source '../../'
+}
