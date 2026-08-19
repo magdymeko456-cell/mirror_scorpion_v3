@@ -8,5 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterSdkPath = properties.getProperty("flutter.sdk") ?: System.getenv("FLUTTER_ROOT")
 if (flutterSdkPath != null) {
-    apply from: "$flutterSdkPath/packages/flutter_tools/gradle/app_plugin_loader.gradle"
+    // إجبار المحرك على معرفة مسار المشروع يدوياً
+    setBinding(new Binding([gradle: this]))
+    evaluate(new File(flutterSdkPath, "packages/flutter_tools/gradle/app_plugin_loader.gradle"))
 }

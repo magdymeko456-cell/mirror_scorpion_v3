@@ -8,12 +8,14 @@ def flutterRoot = localProperties.getProperty('flutter.sdk') ?: System.getenv("F
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+
+// تعريف المسار يدوياً قبل تطبيق السكربت
+project.ext.flutterRoot = flutterRoot
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.mirror.scorpion.v3"
     compileSdk 34
-
     defaultConfig {
         applicationId "com.mirror.scorpion.v3"
         minSdk 21
