@@ -1,21 +1,13 @@
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader) }
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
 }
-
-def flutterRoot = localProperties.getProperty('flutter.sdk') ?: System.getenv("FLUTTER_ROOT")
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-
-// تعريف المسار يدوياً قبل تطبيق السكربت
-project.ext.flutterRoot = flutterRoot
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.mirror.scorpion.v3"
     compileSdk 34
+
     defaultConfig {
         applicationId "com.mirror.scorpion.v3"
         minSdk 21
@@ -26,5 +18,5 @@ android {
 }
 
 flutter {
-    source '../../'
+    source "../../"
 }
