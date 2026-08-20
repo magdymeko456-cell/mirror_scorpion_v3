@@ -39,6 +39,6 @@ flutter {
 }
 
 dependencies {
-    // الربط الجبري لضمان رؤية FlutterActivity
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // الربط الجبري لضمان رؤية FlutterActivity مع إصدار Kotlin الثابت
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10"
 }
