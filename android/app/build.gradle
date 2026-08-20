@@ -4,7 +4,18 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader) }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk') ?: System.getenv("FLUTTER_ROOT")
+
 android {
+    namespace "com.mirror.scorpion.v3"
+    compileSdk 34
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -13,13 +24,6 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-
-    
-
-    
-
-    namespace "com.mirror.scorpion.v3"
-    compileSdk 34
 
     defaultConfig {
         applicationId "com.mirror.scorpion.v3"
@@ -32,4 +36,9 @@ android {
 
 flutter {
     source "../../"
+}
+
+dependencies {
+    // الربط الجبري لضمان رؤية FlutterActivity
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
