@@ -1,61 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'app_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  static const String _themeKey = 'is_dark_mode';
+  ThemeData _themeData = AppTheme.darkTheme;
   bool _isDarkMode = true;
 
+  ThemeData get themeData => _themeData;
   bool get isDarkMode => _isDarkMode;
 
   ThemeProvider() {
-    _loadThemeFromPrefs();
+    _loadTheme();
   }
 
-  Future<void> _loadThemeFromPrefs() async {
+  Future<void> _loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    _isDarkMode = prefs.getBool(_themeKey) ?? true;
+    _isDarkMode = prefs.getBool('darkMode') ?? true;
+    _themeData = _isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme;
     notifyListeners();
   }
 
-  Future<void> toggleTheme(bool isOn) async {
-    _isDarkMode = isOn;
-    notifyListeners();
+  Future<void> toggleTheme(bool isDark) async {
+    _isDarkMode = isDark;
+    _themeData = isDark ? AppTheme.darkTheme : AppTheme.lightTheme;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_themeKey, isOn);
+    await prefs.setBool('darkMode', isDark);
+    notifyListeners();
   }
-
-  ThemeData get currentTheme => _isDarkMode ? darkTheme : lightTheme;
-
-  static final ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF0D1B2A),
-    colorScheme: const ColorScheme.dark(
-      primary: Color(0xFF00B4D8),
-      secondary: Color(0xFF1B263B),
-      surface: Color(0xFF1B263B),
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF1B263B),
-      elevation: 0,
-      centerTitle: true,
-    ),
-  );
-
-  static final ThemeData lightTheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: const Color(0xFFF5F5F5),
-    colorScheme: const ColorScheme.light(
-      primary: Color(0xFF0077B6),
-      secondary: Colors.teal,
-      surface: Colors.white,
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      centerTitle: true,
-      foregroundColor: Colors.black,
-    ),
-  );
 }

@@ -1,0 +1,6 @@
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends android.app.Activity
+-keep class com.tetocollctionway.mirror.** { *; }
+-keep class io.flutter.** { *; }
+-keep class com.google.mlkit.** { *; }
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
